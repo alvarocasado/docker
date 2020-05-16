@@ -1,0 +1,16 @@
+version: "2"
+
+services:
+
+  samba:
+    image: dperson/samba:aarch64
+    restart: always
+    command: '-u "ubuntu;password" -s "media;/media;yes;yes"'
+    stdin_open: true
+    tty: true
+    ports:
+      - 139:130
+      - 445:445
+    volumes:
+      - /usr/share/zoneinfo/America/New_York:/etc/localtime
+      - /media/samba/media:/media
